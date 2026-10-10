@@ -10,10 +10,9 @@
 ## Core Functionality - Registration (2 mins)
 - **Action:** Click on "Register Now" from the Navbar or Home page.
 - **Talking Points:**
-  - "The primary business goal of this portal is team registration. We have officially enabled the live registration flow."
-  - "Notice the multi-step registration form. It collects comprehensive data: Team Details, Leader Details, and Member Details."
-  - "It includes validation to ensure clean data is sent to our Firebase backend."
-  - *(Optional)* Fill out the form quickly and submit it to show the Success screen and Registration ID.
+  - "The primary business goal of this portal is team registration."
+  - "To optimize for reliability and data exportability for our organizers, we seamlessly integrated a robust Google Form for the registration flow, allowing participants to register securely in a new tab."
+  - "This keeps the main site lightning fast while delegating complex data entry to a proven platform."
 
 ## Architecture & Security (1 min)
 - **Talking Points:**

@@ -181,13 +181,13 @@ export default function Home() {
               transition={{ delay: 0.8, duration: 0.8 }}
               className="flex flex-col sm:flex-row items-center justify-center gap-6 mt-12"
             >
-              <Link to="/register" className="group relative w-full sm:w-auto block">
+              <a href="https://forms.gle/PLACEHOLDER" target="_blank" rel="noopener noreferrer" className="group relative w-full sm:w-auto block">
                 <div className="absolute -inset-1 bg-linear-to-r from-gold-600 to-yellow-400 rounded-xl blur-md opacity-70 group-hover:opacity-100 transition duration-300"></div>
                 <div className="relative w-full sm:w-auto bg-navy-900 border border-gold-500/50 text-gold-400 font-bold px-8 py-4 rounded-xl flex items-center justify-center gap-3 text-lg hover:bg-gold-500 hover:text-navy-900 transition-all duration-300">
                   Register Your Team
                   <ArrowRight className="w-6 h-6 group-hover:translate-x-1 transition-transform" />
                 </div>
-              </Link>
+              </a>
               <Link to="/about" className="btn-secondary w-full sm:w-auto justify-center text-lg px-8 py-4 rounded-xl backdrop-blur-md bg-white/5 hover:bg-white/10 border-white/10 hover:border-white/20">
                 Explore the Event
               </Link>
