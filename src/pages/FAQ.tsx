@@ -8,7 +8,7 @@ const FAQS = [
   { question: "When and where will it take place?", answer: "It will be held from 5–6 November 2026 at the CSE Seminar Hall, SJBIT, Bengaluru." },
   { question: "Who can participate?", answer: "This information will be announced by the organizers soon (TBA)." },
   { question: "What is the maximum team size?", answer: "Teams can have a maximum of 4 members, including the team leader." },
-  { question: "What is the registration fee?", answer: "To Be Announced (TBA)." },
+  { question: "What is the registration fee?", answer: "The registration fee is ₹1,000 per team." },
   { question: "What are the problem statement themes?", answer: "Suggested themes include AI/ML, Cybersecurity, Healthcare Tech, EdTech, Sustainability, Smart Cities, and FinTech. Official statements will be released closer to the event." },
   { question: "What is the prize pool?", answer: "There is a tentative total prize pool of ₹45,000. Final amounts will be confirmed later." },
   { question: "Is accommodation available?", answer: "This information will be announced by the organizers." },

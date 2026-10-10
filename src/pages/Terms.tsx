@@ -3,6 +3,8 @@ import { motion } from 'framer-motion';
 import { doc, getDoc } from 'firebase/firestore';
 import { db } from '../lib/firebase';
 import { FileText } from 'lucide-react';
+import ReactMarkdown from 'react-markdown';
+import { defaultTermsConditions } from './TermsContent';
 
 export default function Terms() {
   const [content, setContent] = useState<string>('');
@@ -17,7 +19,7 @@ export default function Terms() {
         if (docSnap.exists() && docSnap.data().content) {
           setContent(docSnap.data().content);
         } else {
-          setContent('1. All participants must abide by the hackathon rules.\n2. Organizers reserve the right to disqualify any team found violating the code of conduct.\n3. The decision of the judges will be final and binding.');
+          setContent(defaultTermsConditions);
         }
       } catch (error) {
         console.error("Error fetching terms:", error);
@@ -62,10 +64,9 @@ export default function Terms() {
               <div className="animate-spin rounded-full h-8 w-8 border-t-2 border-b-2 border-gold-500"></div>
             </div>
           ) : (
-            <div 
-              className="prose prose-invert prose-gold max-w-none text-cloud/80 whitespace-pre-wrap"
-              dangerouslySetInnerHTML={{ __html: content }}
-            />
+            <div className="prose prose-invert prose-gold max-w-none text-cloud/80 whitespace-pre-wrap">
+              <ReactMarkdown>{content}</ReactMarkdown>
+            </div>
           )}
         </motion.div>
       </div>

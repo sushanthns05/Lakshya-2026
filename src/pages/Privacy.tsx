@@ -3,6 +3,8 @@ import { motion } from 'framer-motion';
 import { doc, getDoc } from 'firebase/firestore';
 import { db } from '../lib/firebase';
 import { Shield } from 'lucide-react';
+import ReactMarkdown from 'react-markdown';
+import { defaultPrivacyPolicy } from './PrivacyContent';
 
 export default function Privacy() {
   const [content, setContent] = useState<string>('');
@@ -17,7 +19,7 @@ export default function Privacy() {
         if (docSnap.exists() && docSnap.data().content) {
           setContent(docSnap.data().content);
         } else {
-          setContent('At LAKSHYA 2026, we take your privacy seriously. Any personal information collected during registration will only be used for the purpose of the hackathon and will not be shared with third parties without your explicit consent.');
+          setContent(defaultPrivacyPolicy);
         }
       } catch (error) {
         console.error("Error fetching privacy policy:", error);
@@ -62,10 +64,9 @@ export default function Privacy() {
               <div className="animate-spin rounded-full h-8 w-8 border-t-2 border-b-2 border-gold-500"></div>
             </div>
           ) : (
-            <div 
-              className="prose prose-invert prose-gold max-w-none text-cloud/80 whitespace-pre-wrap"
-              dangerouslySetInnerHTML={{ __html: content }}
-            />
+            <div className="prose prose-invert prose-gold max-w-none text-cloud/80 whitespace-pre-wrap">
+              <ReactMarkdown>{content}</ReactMarkdown>
+            </div>
           )}
         </motion.div>
       </div>

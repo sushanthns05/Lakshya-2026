@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { FastForward, Play } from 'lucide-react';
+import { FastForward, Volume2, VolumeX } from 'lucide-react';
 import { useEffect, useRef, useState } from 'react';
 
 interface IntroProps {
@@ -8,22 +8,23 @@ interface IntroProps {
 
 export default function Intro({ onComplete }: IntroProps) {
   const videoRef = useRef<HTMLVideoElement>(null);
-  const [isBlocked, setIsBlocked] = useState(false);
+  const [isMuted, setIsMuted] = useState(true);
 
-  // Attempt to play on mount to handle browser autoplay policies
   useEffect(() => {
+    // Autoplay muted to bypass mobile browser restrictions
     if (videoRef.current) {
+      videoRef.current.defaultMuted = true;
+      videoRef.current.muted = true;
       videoRef.current.play().catch(error => {
         console.log("Autoplay prevented by browser:", error);
-        setIsBlocked(true);
       });
     }
   }, []);
 
-  const handleManualPlay = () => {
+  const toggleMute = () => {
     if (videoRef.current) {
-      videoRef.current.play();
-      setIsBlocked(false);
+      videoRef.current.muted = !isMuted;
+      setIsMuted(!isMuted);
     }
   };
 
@@ -38,6 +39,8 @@ export default function Intro({ onComplete }: IntroProps) {
       <video
         ref={videoRef}
         autoPlay
+        muted
+        defaultMuted
         playsInline
         onEnded={onComplete}
         className="absolute inset-0 w-full h-full object-contain"
@@ -46,20 +49,19 @@ export default function Intro({ onComplete }: IntroProps) {
         <source src="/eventvideo.mp4" type="video/mp4" />
       </video>
 
-      {/* Manual Play Fallback Overlay */}
-      {isBlocked && (
-        <div className="absolute inset-0 bg-black/60 z-20 flex flex-col items-center justify-center">
-          <button
-            onClick={handleManualPlay}
-            className="group flex flex-col items-center justify-center gap-4 text-white hover:scale-105 transition-transform"
-          >
-            <div className="w-20 h-20 bg-gold-500/90 rounded-full flex items-center justify-center shadow-[0_0_30px_rgba(230,162,60,0.5)]">
-              <Play className="w-8 h-8 ml-1 text-navy-950" />
-            </div>
-            <span className="font-semibold text-lg tracking-wide">Tap to Play Video</span>
-          </button>
-        </div>
-      )}
+      {/* Audio Toggle Button */}
+      <div className="absolute bottom-8 left-8 z-30">
+        <button 
+          onClick={toggleMute}
+          className="group flex items-center justify-center w-12 h-12 bg-black/50 hover:bg-black/70 text-white backdrop-blur-md rounded-full border border-white/20 transition-all duration-300 shadow-lg"
+        >
+          {isMuted ? (
+            <VolumeX className="w-5 h-5 text-white/80 group-hover:text-white" />
+          ) : (
+            <Volume2 className="w-5 h-5 text-white" />
+          )}
+        </button>
+      </div>
 
       {/* Skip Intro Button */}
       <div className="absolute bottom-8 right-8 z-30">

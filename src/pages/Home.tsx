@@ -1,27 +1,31 @@
 import { useState, useEffect } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
-import { ArrowRight, Calendar, MapPin, Users, Trophy, Bell, ChevronDown } from 'lucide-react';
+import { ArrowRight, Calendar, MapPin, Users, Trophy, Bell, ChevronDown, Ticket } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { db } from '../lib/firebase';
 import { collection, query, getDocs, orderBy, where, limit } from 'firebase/firestore';
 
+const calculateTimeLeft = () => {
+  const targetDate = new Date('2026-11-05T09:00:00');
+  const difference = targetDate.getTime() - new Date().getTime();
+  
+  if (difference > 0) {
+    return {
+      days: Math.floor(difference / (1000 * 60 * 60 * 24)),
+      hours: Math.floor((difference / (1000 * 60 * 60)) % 24),
+      minutes: Math.floor((difference / 1000 / 60) % 60),
+      seconds: Math.floor((difference / 1000) % 60),
+    };
+  }
+  return { days: 0, hours: 0, minutes: 0, seconds: 0 };
+};
+
 const CountdownTimer = () => {
-  const [timeLeft, setTimeLeft] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0 });
+  const [timeLeft, setTimeLeft] = useState(calculateTimeLeft());
 
   useEffect(() => {
-    const targetDate = new Date('2026-11-05T09:00:00');
     const interval = setInterval(() => {
-      const now = new Date();
-      const difference = targetDate.getTime() - now.getTime();
-      
-      if (difference > 0) {
-        setTimeLeft({
-          days: Math.floor(difference / (1000 * 60 * 60 * 24)),
-          hours: Math.floor((difference / (1000 * 60 * 60)) % 24),
-          minutes: Math.floor((difference / 1000 / 60) % 60),
-          seconds: Math.floor((difference / 1000) % 60),
-        });
-      }
+      setTimeLeft(calculateTimeLeft());
     }, 1000);
     return () => clearInterval(interval);
   }, []);
@@ -217,11 +221,12 @@ export default function Home() {
       {/* Quick Stats Section */}
       <section className="py-16 bg-navy-950/80 backdrop-blur-xl border-y border-white/5 relative z-10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 lg:gap-8">
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6 lg:gap-8">
             {[
               { icon: Calendar, label: 'Duration', value: '24 Hours' },
               { icon: MapPin, label: 'Venue', value: 'CSE Seminar Hall' },
               { icon: Users, label: 'Team Size', value: 'Up to 4' },
+              { icon: Ticket, label: 'Registration', value: '₹1,000', sub: 'Per Team' },
               { icon: Trophy, label: 'Prize Pool', value: '₹45,000', sub: '+ Internships for Winners' },
             ].map((stat, i) => (
               <motion.div 
