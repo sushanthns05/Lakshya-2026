@@ -33,7 +33,7 @@ export default function Intro({ onComplete }: IntroProps) {
         autoPlay
         playsInline
         onEnded={onComplete}
-        className="absolute inset-0 w-full h-full object-cover"
+        className="absolute inset-0 w-full h-full object-contain"
       >
         <source src="/eventvideo.mp4" type="video/mp4" />
       </video>
