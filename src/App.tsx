@@ -36,17 +36,11 @@ function App() {
     sessionStorage.setItem('introSeen', 'true');
   };
 
-  const handleIntroRegister = () => {
-    setShowIntro(false);
-    sessionStorage.setItem('introSeen', 'true');
-    window.location.href = '/register';
-  };
-
   return (
     <>
       <AnimatePresence mode="wait">
         {showIntro && (
-          <Intro onComplete={handleEnterSite} onRegister={handleIntroRegister} />
+          <Intro onComplete={handleEnterSite} />
         )}
       </AnimatePresence>
       
