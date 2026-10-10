@@ -77,7 +77,7 @@ export default function Footer() {
               <div className="flex items-start gap-3 group">
                 <MapPin className="w-5 h-5 text-gold-500 shrink-0 mt-0.5" />
                 <a 
-                  href="https://maps.app.goo.gl/35KxyTfU1bWw3bE36" 
+                  href="https://maps.app.goo.gl/7TeBdTgJ31bG6Xgt6?g_st=aw" 
                   target="_blank" 
                   rel="noopener noreferrer" 
                   className="text-sm text-cloud/70 group-hover:text-gold-500 transition-colors"

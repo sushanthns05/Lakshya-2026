@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion';
-import { FastForward } from 'lucide-react';
-import { useEffect, useRef } from 'react';
+import { FastForward, Play } from 'lucide-react';
+import { useEffect, useRef, useState } from 'react';
 
 interface IntroProps {
   onComplete: () => void;
@@ -8,17 +8,24 @@ interface IntroProps {
 
 export default function Intro({ onComplete }: IntroProps) {
   const videoRef = useRef<HTMLVideoElement>(null);
+  const [isBlocked, setIsBlocked] = useState(false);
 
   // Attempt to play on mount to handle browser autoplay policies
   useEffect(() => {
     if (videoRef.current) {
       videoRef.current.play().catch(error => {
         console.log("Autoplay prevented by browser:", error);
-        // If unmuted autoplay fails, we could mute it, but the user explicitly requested audio.
-        // It will require a user interaction to start if blocked.
+        setIsBlocked(true);
       });
     }
   }, []);
+
+  const handleManualPlay = () => {
+    if (videoRef.current) {
+      videoRef.current.play();
+      setIsBlocked(false);
+    }
+  };
 
   return (
     <motion.div 
@@ -35,11 +42,27 @@ export default function Intro({ onComplete }: IntroProps) {
         onEnded={onComplete}
         className="absolute inset-0 w-full h-full object-contain"
       >
+        <source src="/eventvideo1.mp4" type="video/mp4" media="(max-width: 768px)" />
         <source src="/eventvideo.mp4" type="video/mp4" />
       </video>
 
+      {/* Manual Play Fallback Overlay */}
+      {isBlocked && (
+        <div className="absolute inset-0 bg-black/60 z-20 flex flex-col items-center justify-center">
+          <button
+            onClick={handleManualPlay}
+            className="group flex flex-col items-center justify-center gap-4 text-white hover:scale-105 transition-transform"
+          >
+            <div className="w-20 h-20 bg-gold-500/90 rounded-full flex items-center justify-center shadow-[0_0_30px_rgba(230,162,60,0.5)]">
+              <Play className="w-8 h-8 ml-1 text-navy-950" />
+            </div>
+            <span className="font-semibold text-lg tracking-wide">Tap to Play Video</span>
+          </button>
+        </div>
+      )}
+
       {/* Skip Intro Button */}
-      <div className="absolute bottom-8 right-8 z-10">
+      <div className="absolute bottom-8 right-8 z-30">
         <button 
           onClick={onComplete}
           className="group flex items-center justify-center gap-2 px-6 py-3 bg-black/50 hover:bg-black/70 text-white backdrop-blur-md rounded-full border border-white/20 transition-all duration-300 shadow-lg"
