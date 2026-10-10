@@ -50,9 +50,9 @@ export default function Navbar() {
                   {link.name}
                 </Link>
               ))}
-              <a href="https://forms.gle/PLACEHOLDER" target="_blank" rel="noopener noreferrer" className="ml-4 btn-primary text-sm py-2 px-4">
+              <Link to="/register" className="ml-4 btn-primary text-sm py-2 px-4">
                 Register Now
-              </a>
+              </Link>
             </div>
           </div>
 
@@ -85,15 +85,13 @@ export default function Navbar() {
                 {link.name}
               </Link>
             ))}
-            <a
-              href="https://forms.gle/PLACEHOLDER"
-              target="_blank"
-              rel="noopener noreferrer"
+            <Link
+              to="/register"
               onClick={() => setIsOpen(false)}
               className="mt-4 btn-primary w-full max-w-50 text-center"
             >
               Register Now
-            </a>
+            </Link>
           </div>
         </div>
       )}

@@ -53,6 +53,8 @@ export default function Register() {
       return;
     }
 
+    if (isSubmitting || isSuccess) return;
+
     setIsSubmitting(true);
     try {
       // Clean up empty members if any
