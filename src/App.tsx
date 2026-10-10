@@ -25,6 +25,7 @@ import AdminAnnouncements from './pages/admin/AdminAnnouncements';
 import AdminPages from './pages/admin/AdminPages';
 import ProtectedRoute from './components/ProtectedRoute';
 import AdminLayout from './components/layout/AdminLayout';
+import ScrollToTop from './components/ScrollToTop';
 
 function App() {
   const [showIntro, setShowIntro] = useState(() => {
@@ -46,6 +47,7 @@ function App() {
       
       {!showIntro && (
         <Router>
+          <ScrollToTop />
           <Toaster position="top-right" />
           <Routes>
             {/* Public Routes */}
