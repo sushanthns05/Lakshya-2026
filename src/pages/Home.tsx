@@ -152,9 +152,13 @@ export default function Home() {
                   <p className="font-bold text-xl md:text-2xl text-transparent bg-clip-text bg-linear-to-r from-white via-cloud to-white/70">
                     Department of Information Science and Engineering
                   </p>
-                  <p className="text-gold-500/90 font-medium text-lg mt-1 tracking-wide">
+                  <p className="text-gold-500/90 font-medium text-lg mt-1 tracking-wide mb-4">
                     S J B Institute of Technology, Bengaluru
                   </p>
+                  <div className="border-t border-white/10 pt-4 mt-4 flex flex-col items-center">
+                    <p className="text-cloud/60 text-xs uppercase tracking-widest mb-3 font-semibold">In Association With</p>
+                    <img src="/dlithe-logo.jpg" alt="DLithe - Be Agile... Be in Demand" className="h-12 object-contain bg-white px-3 py-1 rounded" />
+                  </div>
                 </div>
               </div>
             </motion.div>
