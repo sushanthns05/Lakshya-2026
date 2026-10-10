@@ -5,7 +5,7 @@ export default function Register() {
   useEffect(() => {
     // Redirect to the Google Form after 3 seconds
     const timer = setTimeout(() => {
-      window.location.href = 'https://forms.gle/PLACEHOLDER';
+      window.location.replace('https://forms.gle/PLACEHOLDER');
     }, 3000);
 
     return () => clearTimeout(timer);
