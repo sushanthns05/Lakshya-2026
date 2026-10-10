@@ -17,7 +17,7 @@ export default function Terms() {
         if (docSnap.exists() && docSnap.data().content) {
           setContent(docSnap.data().content);
         } else {
-          setContent('Terms and Conditions will be updated soon.\n\n1. All participants must abide by the hackathon rules.\n2. Organizers reserve the right to disqualify any team found violating the code of conduct.\n3. The decision of the judges will be final and binding.');
+          setContent('1. All participants must abide by the hackathon rules.\n2. Organizers reserve the right to disqualify any team found violating the code of conduct.\n3. The decision of the judges will be final and binding.');
         }
       } catch (error) {
         console.error("Error fetching terms:", error);

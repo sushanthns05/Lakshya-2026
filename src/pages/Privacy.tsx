@@ -17,7 +17,7 @@ export default function Privacy() {
         if (docSnap.exists() && docSnap.data().content) {
           setContent(docSnap.data().content);
         } else {
-          setContent('Privacy Policy content will be updated soon.\n\nAt LAKSHYA 2026, we take your privacy seriously. Any personal information collected during registration will only be used for the purpose of the hackathon and will not be shared with third parties without your explicit consent.');
+          setContent('At LAKSHYA 2026, we take your privacy seriously. Any personal information collected during registration will only be used for the purpose of the hackathon and will not be shared with third parties without your explicit consent.');
         }
       } catch (error) {
         console.error("Error fetching privacy policy:", error);
