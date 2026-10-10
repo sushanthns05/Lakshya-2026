@@ -11,7 +11,7 @@ export default function Register() {
   const [registrationId, setRegistrationId] = useState('');
 
   // 1 = Config Loading, 2 = Registration Open, 3 = Not Announced/Closed
-  const [registrationStatus] = useState<'open' | 'closed' | 'tba'>('tba');
+  const [registrationStatus] = useState<'open' | 'closed' | 'tba'>('open');
 
   const [formData, setFormData] = useState({
     teamName: '',
