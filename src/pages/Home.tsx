@@ -157,7 +157,7 @@ export default function Home() {
                   </p>
                   <div className="border-t border-white/10 pt-4 mt-4 flex flex-col items-center">
                     <p className="text-cloud/60 text-xs uppercase tracking-widest mb-3 font-semibold">In Association With</p>
-                    <img src="/dlithe-logo.jpg" alt="DLithe - Be Agile... Be in Demand" className="h-12 object-contain bg-white px-3 py-1 rounded" />
+                    <img src="/Dlithe.jpeg" alt="DLithe - Be Agile... Be in Demand" className="h-12 object-contain bg-white px-3 py-1 rounded" />
                   </div>
                 </div>
               </div>
